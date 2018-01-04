@@ -1,0 +1,46 @@
+{
+  "categorization": {
+    "type": "APPLICATION",
+    "category": "Productivity"
+  },
+  "description": {
+    "texts": {
+      "title": "SMD  Target-DDI",
+      "features": [
+        "Diseño Amigable"
+      ],
+      "short-description": "Sistema de Medicion de Desempeño para Target desarrollado por SystemLog",
+      "full-description": "Sistema de Medicion de Desempeño para Target desarrollado por SystemLog",
+      "keywords": "SMD,Target-DDI,SMD Target-DDI",
+      "recent-changes": "",
+      "privacy-policy": "",
+      "eula": ""
+    },
+    "images": {
+      "screenshots": [
+        "../App/Screenshots/1.png",
+        "../App/Screenshots/2.png",
+        "../App/Screenshots/3.png",
+        "../App/Screenshots/4.png"
+      ],
+      "app-icon-small": "../logo_app2.png",
+      "app-icon": "../logo_app.png",
+      "small-promo": "",
+      "large-promo": "../imagen_destacada.jpg"
+    },
+    "videos": {
+      "video-url": ""
+    }
+  },
+  "packages": {
+    "apk-file": "../App/appcolun.cordova.crosswalk.201704041021/SMD Target-DDI.apk",
+    "zip-xdk-compliant": false,
+    "zip-file": "",
+    "secondary-apk-file": ""
+  },
+  "support": {
+    "email": "",
+    "website": ""
+  },
+  "testing-instructions": ""
+}

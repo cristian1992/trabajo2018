@@ -1,0 +1,262 @@
+<ion-view view-title="Documento">
+
+  <!--<ion-content class="animate-fade-slide-in" ng-controller="ActivityCtrl">-->
+<ion-content  ng-controller="ActivityCtrl">
+
+
+
+<style>
+
+
+/* The Modal (background) */
+.modal {
+
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*max-width: 630px;
+  min-width: 320px;*/
+  z-index: 1; /* Sit on top */
+  padding-top: 50%; /* Location of the box */
+  backface-visibility: hidden;
+  /*transform: translateX(-50%) translateY(-50%);*/
+  overflow: auto;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  
+
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button23 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+
+
+
+.button1 {border-radius: 2px;}
+</style>
+
+
+<style type="text/css">
+  
+</style>
+
+
+
+  <h4 class="content padding double-padding-x"><b>Datos del documento</b></h4>
+  <div  ng-repeat="obj in informacion">
+    <ion-card class="card card-ios" style="padding: 13px 16px 14px 16px;height:150px;background-color: whitesmoke;">
+
+      <ion-card-content class="card-content">
+
+
+         <hr>
+             
+        <ion-card-content>
+          <a class="item item-avatar" >
+            <img src="img/encuesta.png">
+             <b>GDE     : </b> {{obj.id_ot}}<br>
+             <b>N* Dcto     : </b> {{obj.numero}}<br>
+             <b>Direccion     : </b> {{obj.direccion_alternativa}}<br>
+             <input type="hidden" id="id_ot" name="id_ot" value="{{obj.id_documento}}">
+            <input type="hidden" id="id_ot2" name="id_ot2" value="{{obj.id_ot}}">
+          </a>
+        </ion-card-content>
+             
+                <hr>
+      <br><br>
+  
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+<!--
+pattern="[A-Za-z]{4-16}"
+-->
+<input type="text" id="txtRut" name="txtRut" rows="6" style="margin:20px;background-color: white; width: 80%;padding:10px; color: black; font-size: 18px; border-style: solid; border-color: block; border-radius: 5px; border-width: 1px; border-color: black;resize: none;" placeholder="11111111-4" maxlength="10" required />
+
+  <input type="text"  id="txtNombre" name="txtNombre" rows="6" style="margin:20px;background-color: white; width: 80%;padding:10px; color: black; font-size: 18px; border-style: solid; border-color: block; border-radius: 5px; border-width: 1px; border-color: black;resize: none;" placeholder="Recibe:nombre y apellido" maxlength="200"  required  />
+ 
+
+
+
+
+    <select name="cars" id="cars" onchange="toggle_form_element(this)" style="margin:20px;background-color: white; width: 80%;padding:10px;   border-color: black;resize: none;">
+  <option value="1">Completa</option>
+  <option value="2">Parcial</option>
+  <option value="3">Rechazado</option>
+</select>
+
+
+  <select name="causal" id="causal"  style="margin:20px;background-color: white; width: 80%;padding:10px;   border-color: black;resize: none; display: none">
+  <option value="1">Vence inferior a 1 año</option>
+  <option value="2">pedidos repetidos</option>
+  <option value="3">O/C anulada</option>
+  <option value="4">Sin responsable para recibir</option>
+  <option value="5">Postergado por responsable</option>
+  <option value="6">Diferencia de precio</option>
+  <option value="7">pedido no solicitado</option>
+  <option value="8">Direccion Erronea</option>
+  <option value="9">Producto no solicitado</option>
+  <option value="10">Mercaderia dañada</option>
+  <option value="11">Unidades sobrantes</option>
+  <option value="12">Local Cerrado</option>
+  <option value="13">Unidades faltantes</option>
+
+</select>
+
+<div class="text-center" id="foto" name="foto">
+<div class="text-center"  id="img" name="img" style="display: none">
+  <img id="fotoLocal" name="fotoLocal" src="" width="100px" height="100px" class="text-center">
+ 
+</div>
+ <button onclick="ObtenerFoto();"     style="width:70%;margin:10px" class="button button-full button-positive">
+   <img  src="img/camera-icon.png" height="30"  width="30'" style=" left: 50%;
+    margin-left: -115px; 
+    top: 50%;
+    margin-top: -15px; 
+    position: absolute;" />
+    <span>Tomar fotografia</span>
+ </button>
+  
+            
+</div>
+
+
+<div class="text-center" id="check" name="check" style="display: none">
+<input type="checkbox" id="cbox1" name="cbox1" value="" class="text-center" >
+Rechazar Guia de embarque <br>
+Completa
+</div>
+
+
+            
+
+            
+<input type="button" onclick="enviarDatos();"  value="Finalizar" style="width:90%;margin:20px" class="button button-full button-balanced">
+
+
+
+
+
+
+
+
+  <div class="modal" id="myModal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+        <div class="text-center">
+    <p>La informacion fue guardada correctamente</p>
+  </div>
+
+    <div ng-controller="ActivityCtrl">
+      <div class="text-center">
+        <button ng-click="cambiar()" class="button23 button1">Aceptar</button> 
+      </div>
+    
+    </div>
+  </div>
+  </div>
+
+
+  <div class="modal" id="myModal2">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+        <div class="text-center">
+    <p>La informacion fue guardadada correctamente</p><br>
+    <p>Se ha rechazado la guia de embarque</p>
+
+  </div>
+
+    <div ng-controller="ActivityCtrl">
+      <div class="text-center">
+    <button ng-click="cambiar2()" class="button23 button1">Aceptar</button> 
+  </div>
+    </div>
+  </div>
+  </div>
+
+   <div class="modal" id="myModal3">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+        <div class="text-center">
+    <p>La informacion fue guardadada correctamente</p><br>
+    <p>Se ha rechazo el documento</p>
+  </div>
+
+    <div ng-controller="ActivityCtrl">
+      <div class="text-center">
+    <button ng-click="cambiar()" class="button23 button1">Aceptar</button> 
+  </div>
+    </div>
+  </div>
+  </div>
+
+
+    <div class="modal" id="myModalfoto">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+        <div class="text-center">
+    <p>Tome una Fotografia</p><br>
+  </div>
+
+    <div ng-controller="ActivityCtrl">
+      <div class="text-center">
+    <button class="button23 button1">Aceptar</button> 
+  </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+
+            
+         
+
+
+
+   
+
+
+

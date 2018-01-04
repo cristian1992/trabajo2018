@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=RobotoDraft%3A400%2C500%2C700%2C400italic" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+    <script src="js/custom-scripting.js"></script>
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ion-md-input/css/ion-md-input.min.css" rel="stylesheet">
+    <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-material/dist/ionic.material.min.js"></script>
+    <script src="lib/ion-md-input/js/ion-md-input.min.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="js/ng-cordova.min.js"></script>
+
+
+
+
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+	
+
+	<script type="text/javascript" src="cordova.js" ></script>
+    <script type='text/javascript' src='jquery-3.0.0.js' ></script>
+ 
+
+
+   
+<!--
+     <link rel='stylesheet' href='css/jquery.mobile-1.4.5.min.css'/>
+        <link rel='stylesheet' href='css/jqm-demos.css'/>
+        <script src='js/jquery.js'></script>
+        <script src='js/jquery.mobile-1.4.5.min.js'></script>
+        -->
+
+
+      
+<script type="text/javascript">
+    function toggle_form_element(select) {
+        if (select.value == '3') {
+            document.getElementById('foto').style.display = 'none';
+            document.getElementById('causal').style.display = 'block';
+            document.getElementById('check').style.display = 'block';
+
+
+        }else if(select.value == '2'){
+            document.getElementById('causal').style.display = 'block';
+            document.getElementById('foto').style.display = 'block';
+            document.getElementById('check').style.display = 'none';
+
+        }else{
+             document.getElementById('causal').style.display = 'none';
+            document.getElementById('foto').style.display = 'block';
+            document.getElementById('check').style.display = 'none';
+
+        }
+    }
+</script>
+        
+
+
+
+
+
+
+        <script>
+
+     document.addEventListener("deviceready", onDeviceReady, false);
+
+  // Cordova is ready
+  function onDeviceReady() {
+    // Nothing here
+  }
+
+   // alert dialog dismissed
+    function alertDismissed() {
+        // do something
+    }
+
+    // Show a custom alert
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'La informacion fue guardada correctamente',  // message
+            alertDismissed,         // callback
+            '',            // title
+            'Aceptar'                  // buttonName
+        );
+    }
+
+     function showAlert2() {
+        navigator.notification.alert(
+            'El documento fue rechazado',  // message
+            alertDismissed,         // callback
+            '',            // title
+            'Aceptar'                  // buttonName
+        );
+    }
+
+    function showAlert3() {
+        navigator.notification.alert(
+            'Complete todos los campos',  // message
+            alertDismissed,         // callback
+            '',            // title
+            'Aceptar'                  // buttonName
+        );
+    }
+
+     function showAlert4() {
+        navigator.notification.alert(
+            'Tome una fotografia',  // message
+            alertDismissed,         // callback
+            '',            // title
+            'Aceptar'                  // buttonName
+        );
+    }
+
+       function showAlert5() {
+        navigator.notification.alert(
+            'Campos contienen espacios',  // message
+            alertDismissed,         // callback
+            '',            // title
+            'Aceptar'                  // buttonName
+        );
+    }
+
+    function showAlert6() {
+        navigator.notification.alert(
+            'El rut tiene un formato incorrecto',  // message
+            alertDismissed,         // callback
+            '',            // title
+            'Aceptar'                  // buttonName
+        );
+    }
+
+    function showAlert7() {
+        navigator.notification.alert(
+            'Ingrese solo letras',  // message
+            alertDismissed,         // callback
+            '',            // title
+            'Aceptar'                  // buttonName
+        );
+    }
+       
+
+var fichero; //tendrá la ruta de la imagen a enviarfunction ObtenerFoto() //obtenemos la foto de la camara
+function ObtenerFoto()
+{
+navigator.camera.getPicture(correcto, error, { quality: 20,
+                    destinationType: Camera.DestinationType.FILE_URL,
+                    correctOrientation: true  });
+}
+
+function correcto(rutaImagen) //hemos obtenido la imagen correctamente
+{
+   document.getElementById("img").style.display = "block";
+document.getElementById("fotoLocal").src = rutaImagen;
+fichero=rutaImagen;
+}
+
+function error(message) //en caso de error en la captura mostramos una ventana con la información
+{
+alert ("Error => " + message);
+}
+
+
+
+
+
+function enviarDatos ()
+{
+
+ $estado=document.getElementById("cars").value;
+ $id=document.getElementById("id_ot").value;
+ $rut=document.getElementById("txtRut").value;
+ $nombre=document.getElementById("txtNombre").value;
+
+  
+
+  var rexp = new RegExp(/^([0-9])+\-([kK0-9])+$/);
+
+
+ 
+  var rexpnombre = new RegExp(/[a-zA-Z]/);
+
+
+  
+
+String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ""); };
+
+
+
+if($rut!=""  && $nombre!="" )
+{
+
+if($rut.trim().length != 0  && $nombre.trim().length != 0)
+{
+
+   if($rut.match(rexp))
+  {
+    if($nombre.match(rexpnombre))
+{
+
+
+if($estado==1)
+{
+ 
+   if(fichero === undefined)
+   {
+    
+
+     showAlert4();
+   }
+   else{
+
+     var image = document.getElementById('fotoLocal');
+                image.src = fichero  + '?' + Math.random();
+                
+                var options = new FileUploadOptions();
+                options.fileKey = "file";
+                options.fileName = fichero.substr(fichero.lastIndexOf('/') + 1);
+                options.mimeType = "image/jpeg";
+                
+                var params = {};
+                /*
+                params.value1 = document.getElementById("id_ot").value;
+                params.value2 = document.getElementById("txtRut").value;
+                params.value3 = document.getElementById("txtNombre").value;
+                params.estado = $estado;
+                */
+
+                params.value1 = document.getElementById("id_ot").value;
+                params.value2 = document.getElementById("txtRut").value;
+                params.value3 = document.getElementById("txtNombre").value;
+                params.estado = $estado;
+
+
+                options.params = params;
+                options.chunkedMode = false;
+
+                   var ft = new FileTransfer();
+                ft.upload(fichero, "http://netzasonepar.systemlog.cl/webservices/documento_foto.php", function(result){
+                   // showAlert();
+                    //window.location="templates/profile.html";
+                    //document.getElementById("myselector").click();
+                  //  alert('successfully uploaded ' + result.response);
+
+                  var modal = document.getElementById('myModal');
+                  
+
+                 modal.style.display = "block";
+
+
+                }, function(error){
+                    alert('error : ' + JSON.stringify(error));
+                }, options);
+   }
+
+   
+
+
+}
+else if($estado==2){
+
+     if(fichero === undefined)
+   {
+    
+
+     showAlert4();
+   }
+   else{
+
+                   var image = document.getElementById('fotoLocal');
+                image.src = fichero  + '?' + Math.random();
+                
+                var options = new FileUploadOptions();
+                options.fileKey = "file";
+                options.fileName = fichero.substr(fichero.lastIndexOf('/') + 1);
+                options.mimeType = "image/jpeg";
+                
+                var params = {};
+                params.value1 = document.getElementById("id_ot").value;
+                params.value2 = document.getElementById("txtRut").value;
+                params.value3 = document.getElementById("txtNombre").value;
+                params.causal = document.getElementById("causal").value;
+                params.estado = $estado;
+
+
+                options.params = params;
+                options.chunkedMode = false;
+
+                   var ft = new FileTransfer();
+                ft.upload(fichero, "http://netzasonepar.systemlog.cl/webservices/documento_foto.php", function(result){
+                    
+
+                      var modal = document.getElementById('myModal');
+                  
+
+                 modal.style.display = "block";
+                  //  alert('successfully uploaded ' + result.response);
+                }, function(error){
+                    alert('error : ' + JSON.stringify(error));
+                }, options);
+}
+
+}
+
+else{
+                    var valor=document.getElementById("cbox1").checked;
+              
+                   if (valor==true) {
+
+                    var parametros = {
+                "value1" : document.getElementById("id_ot").value,
+                "value2" : document.getElementById("txtRut").value,
+                "value3" :document.getElementById("txtNombre").value,
+                "check": document.getElementById("cbox1").checked,
+                "id_ot": document.getElementById("id_ot2").value,
+                 "causal": document.getElementById("causal").value,
+                 "estado": $estado
+                      };
+               $.ajax({
+                data:  parametros, //datos que se envian a traves de ajax
+                url:   'http://netzasonepar.systemlog.cl/webservices/documento_foto.php', //archivo que recibe la peticion
+                type:  'post', //método de envio
+                success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+
+                          var modal = document.getElementById('myModal2');
+                  
+
+                 modal.style.display = "block";
+                }
+                    });
+
+                }
+
+
+                else if(valor==false){
+
+                    var parametros = {
+                "value1" : document.getElementById("id_ot").value,
+                "value2" : document.getElementById("txtRut").value,
+                "value3" :document.getElementById("txtNombre").value,
+                "check": document.getElementById("cbox1").checked,
+                "id_ot": document.getElementById("id_ot2").value,
+                 "causal": document.getElementById("causal").value,
+                 "estado": $estado
+                      };
+               $.ajax({
+                data:  parametros, //datos que se envian a traves de ajax
+                url:   'http://netzasonepar.systemlog.cl/webservices/documento_foto.php', //archivo que recibe la peticion
+                type:  'post', //método de envio
+                success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+              
+                          var modal = document.getElementById('myModal3');
+                  
+
+                 modal.style.display = "block";
+                }
+                    });
+
+                }
+
+}
+
+}
+
+else{
+
+ showAlert7();
+
+}
+
+}
+
+else{
+
+ showAlert6();
+
+}
+
+
+}
+
+else{
+
+ showAlert5();
+
+}
+
+}
+else{
+   showAlert3();
+}
+
+}
+
+
+                                        
+        </script>
+
+
+
+
+
+
+
+</head>
+<body ng-app="starter" class="platform-browser platform-cordova platform-webview">
+    <ion-nav-view></ion-nav-view>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<ion-view view-title="Perfil">
+  <ion-content ng-class="{expanded:$scope.isExpanded}">
+    <div class="hero slide-up" style="background-image: url('img/camion-carga.jpg');">
+      <div class="content">
+        <!--<div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>-->
+        <h3><a class="light" style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">{{nombre_completo}}</a></h3>
+        <h4 style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color: red">{{nombre_sucursal}}</h4>
+      </div>
+    </div>
+    <!-- MENU PROFILE -->
+
+    <!-- LISTADO DE EVALUACIONES -->
+    <h4 class="content padding double-padding-x">Lista de GE</h4>
+      <div ng-repeat="dato in datos">
+
+      <span ng-if="dato.id_ot">
+
+        <ion-card ng-click="cargarObjetivos({{dato.id_ot}})">
+        <ion-card-content>
+          <a class="item item-avatar" >
+            <img src="img/encuesta.png">
+            <p><b>GE Nª: {{dato.id_ot}}</b></p><br>
+          </a>
+        </ion-card-content>
+      </ion-card>
+
+      </span>
+<div></div>
+<span ng-if="!dato.id_ot">
+<div class="text-center">No hay GE</div>
+</span>
+
+
+
+
+      </div>
+
+    <!-- FIN LISTADO DE EVALUACIONES -->
+
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,50 @@
+<ion-view view-title="Perfil">
+  <ion-content ng-class="{expanded:$scope.isExpanded}">
+    <div class="hero slide-up" style="background-image: url('img/camion-carga.jpg');">
+      <div class="content">
+        <!--<div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>-->
+        <h3 style="padding-bottom: 45px;"><a class="light" style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">GE Nª {{id_ot}}</a></h3>
+        
+      </div>
+    </div>
+	
+    <!-- OBJETIVOS -->
+	<h4 class="content padding double-padding-x"><b>Seleccione Documento:</b></h4>
+	<!--<div class="list animate-fade-slide-in-right" ng-repeat="obj in objetivos">-->
+<div  ng-repeat="obj in objetivos">
+
+<span ng-if="obj.id_documento">
+		
+
+		  <ion-card-content class="card-content">
+		  	
+              <ion-card ng-click="cargarInformacionDoc({{obj.id_documento}})">
+        <ion-card-content>
+          <a class="item item-avatar" >
+            <img src="img/encuesta.png">
+             <b>N* documento    : </b> {{obj.numero}}<br>
+             <b>Tipo    : </b> {{obj.tipo}}<br>
+
+          </a>
+        </ion-card-content>
+      </ion-card>       
+           
+
+	
+		  </ion-card-content>
+
+
+
+</span>
+<div></div>
+<span ng-if="!obj.id_documento">
+<div class="text-center">No hay documentos</div>
+</span>
+
+
+
+	</div>
+  <br>
+		
+  </ion-content>
+</ion-view>
