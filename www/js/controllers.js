@@ -81,7 +81,7 @@ angular.module('starter.controllers', ['ngCordova'])
       'Aceptar'              // buttonName
              );
 
-         location.reload();
+        // window.location.reload(true);
      // $state.transitionTo("app.profile");
        
       }
